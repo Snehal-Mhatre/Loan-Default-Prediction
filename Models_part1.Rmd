@@ -1,9 +1,3 @@
----
-title: "Assignment 1b and C"
-author: "Anisha Joshi, Sakshi Wadhwa, Snehal Mhatre"
-date: "2/28/2021"
-output: pdf_document
----
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -104,12 +98,8 @@ mydata$loan_status <- factor(mydata$loan_status, levels=c("Fully Paid", "Charged
 ```
 
 
-#Ques5 - 
+
 ```{r}
-
-#Develop decision tree models to predict default. (a) Split the data into training and validation sets. What proportions do you consider, why? (b) Train decision tree models (use both rpart, c50) [If something looks too good, it may be due to leakage – make sure you address this] What parameters do you experiment with, and what performance do you obtain (on training and validation sets)? Clearly tabulate your results and briefly describe your findings. How do you evaluate performance – which measure do you consider, and why? (c) Identify the best tree model. Why do you consider it best? Describe this model – in terms of complexity (size). Examine variable importance. Briefly describe how variable importance is obtained in your best model.
-
-# Q. 5A - Splitting the dataset into 70/30 proportion
 set.seed(1234)
 rcount<- nrow(mydata)
 trainIndex <- sample(1:rcount, size = round(0.7*rcount), replace = FALSE)
@@ -207,8 +197,7 @@ aucPerfC50=performance(DT4, "auc")
 aucPerfC50@y.values
 
 ```
-
-Question 6 - Random Forest Model 1 with 50 trees
+Random Forest Model 1 with 50 trees
 ```{r}
 library(ROSE)
 set.seed(1235)
@@ -329,7 +318,7 @@ legend('bottomright', c('RandomForest','Rpart'), lty=1, col=c('red','green'), ce
 
 ```
 
-#Question 7 
+
 ```{r}
 #calculate Actual Term
 lcdb$last_pymnt_d<-paste(lcdb$last_pymnt_d, "-01", sep = "")
@@ -367,8 +356,6 @@ prPerfRF2$cdRet <- 6
 prPerfRF2$cumCDRet <- cumsum(prPerfRF2$cdRet)
 plot(prPerfRF2$cumProfit, main = "Cumulative Profit Comparison")
 lines(prPerfRF2$cumCDRet, col='green')
- 
-
 
 ```
 
@@ -392,8 +379,6 @@ lines(prPerfDT3$cumCDRet, col='green')
 
 ```
 
-
-Question 8
 ```{r}
 #XGBoost implementataion
 
